@@ -1,1 +1,33 @@
+namespace SolutionProject.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index(int id)
+        {
+                ListOfClass listOfClass = new ListOfClass();
+                listOfClass.employee = employee(id);
 
+                return View(listOfClass);
+        }
+
+        public List<Employee> (int id)
+        {
+            List<Employee> emp;
+            using (SolutionProject.Models.SolutionEntities db = new SolutionEntities())
+            {
+                emp = (from a in db.Employee
+                      where a.ID == id
+                      select new Employee
+                      {
+                          ID = a.ID,
+                          Name = a.Name,
+                          Surname = a.Surname,
+                          BirthDate = a.BirthDate,
+                          City = a.City
+                      }).ToList();
+            }
+
+            return emp;
+        }
+    }
+}
