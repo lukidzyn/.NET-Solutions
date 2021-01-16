@@ -1,0 +1,31 @@
+@model SolutionProject.Models.ListOfClass
+
+<html>
+<head>
+</head>
+<body>
+    <div id="Grid" style="margin-top: 50px; display: inline-block; margin-left: -100px;">
+        <table class="table table-bordered" id="Table" style="margin-left: auto; margin-right: auto;">
+            <thead>
+                <tr class="active">
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Surname</th>
+                    <th class="text-center">Date of birth</th>
+                    <th class="text-center">City</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+                @foreach (var item in Model.employee)
+                {
+                <tr style="background-color:#b3ffb3;">
+                     <td class="text-center">@item.Name</td>
+                     <td class="text-center">@item.Surname</td>
+                     <td class="text-center">@item.BirthDate</td>
+                     <td class="text-center">@item.City</td>
+                 </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
